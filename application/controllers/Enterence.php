@@ -9,7 +9,7 @@ class Enterence extends CI_Controller {
     
     if(isset($this->session->userdata['admin']['admin_id'])){
 
-      redirect('http://localhost/piazza/index.php/Dashboard','refresh');
+      redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
     }
     else{
       if($this->input->post()){
@@ -27,12 +27,12 @@ class Enterence extends CI_Controller {
 
         if(empty($admin)){
           $this->session->set_flashdata('error', 'Hatalı kullanıcı adı veya şifre girdiniz.');
-          redirect('http://localhost/piazza/index.php/Enterence','refresh');
+          redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
         }
         else{
 
           $this->session->set_userdata('admin',$admin);
-          redirect('http://localhost/piazza/index.php/Dashboard','refresh');
+          redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
         }
       }
       else{
@@ -43,7 +43,7 @@ class Enterence extends CI_Controller {
 
   public function out(){
     $this->session->sess_destroy();
-    redirect('http://localhost/piazza/index.php/Enterence','refresh');
+    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
   }
  
   public function signup_student(){
@@ -83,18 +83,18 @@ class Enterence extends CI_Controller {
     }
 
     if($counter!=0){
-      redirect('http://localhost/piazza/index.php/Enterence/signup_teacher','refresh');
+      redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence/signup_teacher','refresh');
     }
     else{
       $this->Login_model->addTeacher($know);
-      redirect('http://localhost/piazza/index.php/Enterence','refresh');
+      redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
     }
   
 
 
    }
    else{
-    redirect('http://localhost/piazza/index.php/Enterence/signup_teacher','refresh');
+    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence/signup_teacher','refresh');
    }
    }
    else{
@@ -113,18 +113,18 @@ class Enterence extends CI_Controller {
     }
 
     if($counter!=0){
-      redirect('http://localhost/piazza/index.php/Enterence/signup_student','refresh');
+      redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence/signup_student','refresh');
     }
     else{
       $this->Login_model->addStudent($know);
-      redirect('http://localhost/piazza/index.php/Enterence','refresh');
+      redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
     }
   
 
 
    }
    else{
-    redirect('http://localhost/piazza/index.php/Enterence/signup_student','refresh');
+    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence/signup_student','refresh');
    }
    }
    

@@ -93,7 +93,7 @@ window.onclick = function(event) {
 
 <body>
 
-<form action="http://localhost/piazza/index.php/enterence/real_sign/1" method="post" style="border:1px solid #ccc">
+<form action="http://localhost/Bil372_Grup4_Etunet/index.php/enterence/real_sign/1" method="post" style="border:1px solid #ccc">
   <div class="container">
     <h1>Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
@@ -117,7 +117,7 @@ window.onclick = function(event) {
 
 <script>
 function myFunction() {
-  location.replace("http://localhost/piazza/index.php/enterence/")
+  location.replace("http://localhost/Bil372_Grup4_Etunet/index.php/enterence/")
 }
 </script>
 

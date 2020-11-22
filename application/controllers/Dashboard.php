@@ -13,7 +13,7 @@ class Dashboard extends CI_Controller {
 
 			}
 	    	else{
-	      		redirect('http://localhost/piazza/index.php/Enterence','refresh');
+	      		redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 	    	}
 	    	
 

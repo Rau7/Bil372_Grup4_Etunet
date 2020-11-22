@@ -170,7 +170,7 @@ body{
         <?php echo $this->session->flashdata('error'); ?> </span>
       </div>
     <?php } ?>
-      <form class="login-form" action="http://localhost/piazza/index.php/enterence" method="post">
+      <form class="login-form" action="http://localhost/Bil372_Grup4_Etunet/index.php/enterence" method="post">
         <input type="text" placeholder="User mail" name="mail"><br>
         <input type="password" placeholder="password" name="password"><br>
         <input type="radio" id="stu" name="student" value="stu" checked>
@@ -180,11 +180,11 @@ body{
         <input type="Submit" value="Login" style="margin-top: 5px;">
       </form>
       <label for="stu">Student</label>
-      <form class="login-form" action="http://localhost/piazza/index.php/enterence/signup_student/" method="post">
+      <form class="login-form" action="http://localhost/Bil372_Grup4_Etunet/index.php/enterence/signup_student/" method="post">
           <input type="submit" value="Sign Up"/>
       </form>
       <label for="stu">Teacher</label>
-      <form class="login-form" action="http://localhost/piazza/index.php/enterence/signup_teacher/" method="post">
+      <form class="login-form" action="http://localhost/Bil372_Grup4_Etunet/index.php/enterence/signup_teacher/" method="post">
           <input type="submit" value="Sign Up"/>
       </form>
     </div>
