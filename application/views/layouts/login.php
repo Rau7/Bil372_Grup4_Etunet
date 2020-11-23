@@ -173,17 +173,21 @@ body{
       <form class="login-form" action="http://localhost/Bil372_Grup4_Etunet/index.php/enterence" method="post">
         <input type="text" placeholder="User mail" name="mail"><br>
         <input type="password" placeholder="password" name="password"><br>
-        <input type="radio" id="stu" name="student" value="stu" checked>
-        <label for="stu">Student</label><br>
-        <input type="radio" id="teach" name="teacher" value="teach">
-        <label for="teach">Teacher</label><br>
+  
+        <input type="radio" id="huey" name="drone" value="stu"
+         checked>
+        <label for="huey">Student</label>
+
+        <input type="radio" id="dewey" name="drone" value="teach">
+        <label for="dewey">Teacher</label>
+
         <input type="Submit" value="Login" style="margin-top: 5px;">
       </form>
-      <label for="stu">Student</label>
+      <label for="stu1">Student</label>
       <form class="login-form" action="http://localhost/Bil372_Grup4_Etunet/index.php/enterence/signup_student/" method="post">
           <input type="submit" value="Sign Up"/>
       </form>
-      <label for="stu">Teacher</label>
+      <label for="tch">Teacher</label>
       <form class="login-form" action="http://localhost/Bil372_Grup4_Etunet/index.php/enterence/signup_teacher/" method="post">
           <input type="submit" value="Sign Up"/>
       </form>

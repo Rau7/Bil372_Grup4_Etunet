@@ -19,10 +19,12 @@ class Enterence extends CI_Controller {
 
           $admin = $this->Login_model->getStudent($this->input->post());
           $admin['admin_id'] = $admin['student_id'];
+          $admin['type'] = "student";
         }
         else{
           $admin = $this->Login_model->getTeacher($this->input->post());
           $admin['admin_id'] = $admin['teacher_id'];
+          $admin['type'] = "teacher";
         }
 
         if(empty($admin)){
