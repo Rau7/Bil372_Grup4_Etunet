@@ -32,7 +32,7 @@ class Courses extends CI_Controller {
 				
 		   }
 		    else{
-		      redirect('http://localhost/bookstore/index.php/Login','refresh');
+		      redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 		    }
 	    	
 
@@ -49,16 +49,14 @@ class Courses extends CI_Controller {
 
 		if(isset($this->session->userdata['admin']['admin_id'])){
 
+			$this->load->model("Courses_model");
 
-			print_r($this->input->post());
-			die();
+			$this->Courses_model->addCourse($this->input->post(),$this->session->userdata['admin']['admin_id']);
 
-			$data['title'] = "Add Course";
-	  		$data['subview'] = "add_course";
-	  		$this->load->view('layouts/standart',$data);
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Courses','refresh');
 		}
 		else{
-			redirect('http://localhost/bookstore/index.php/Login','refresh');
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 		}
 	  
 
