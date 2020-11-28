@@ -10,8 +10,11 @@ class Courses extends CI_Controller {
 
 				$this->load->model("Courses_model");
 	    
-	    		if($this->session->userdata['admin']['type'] === "teacher"){
+
+	    		if($this->session->userdata['admin']['type'] == 1){
+	    			
 					$data['courses'] = $this->Courses_model->getCoursesOfTeacherWithId($this->session->userdata['admin']['admin_id']);
+
 
 					if(empty($data['courses'])){
 						$data['subview'] = "empty_teacher_courses";

@@ -4,7 +4,7 @@ class Enterence extends CI_Controller {
 
   public function index(){
 
-  $this->load->model("Login_model");
+   $this->load->model("Login_model");
 
     
     if(isset($this->session->userdata['admin']['admin_id'])){
@@ -12,19 +12,16 @@ class Enterence extends CI_Controller {
       redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
     }
     else{
+
       if($this->input->post()){
 
         $admin;
-        if($this->input->post()['student']){
+        if($this->input->post()['drone'] == "stu"){
 
           $admin = $this->Login_model->getStudent($this->input->post());
-          $admin['admin_id'] = $admin['student_id'];
-          $admin['type'] = "student";
         }
         else{
           $admin = $this->Login_model->getTeacher($this->input->post());
-          $admin['admin_id'] = $admin['teacher_id'];
-          $admin['type'] = "teacher";
         }
 
         if(empty($admin)){
@@ -33,6 +30,17 @@ class Enterence extends CI_Controller {
         }
         else{
 
+          if($this->input->post()['drone'] == "stu"){
+            $admin = $this->Login_model->getStudent($this->input->post());
+            $admin['admin_id'] = $admin['student_id'];
+            $admin['type'] = "student";
+          }
+          else{
+            $admin = $this->Login_model->getTeacher($this->input->post());
+
+            $admin['admin_id'] = $admin['teacher_id'];
+            $admin['type'] = "teacher";
+          }
           $this->session->set_userdata('admin',$admin);
           redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
         }
@@ -49,11 +57,8 @@ class Enterence extends CI_Controller {
   }
  
   public function signup_student(){
-  $data['title'] = "Sign Up";
-
-  $this->load->model("Login_model");
-
-  $this->load->view('layouts/signup_student',$data);
+ 
+  $this->load->view('layouts/signup_student');
 
   }
 

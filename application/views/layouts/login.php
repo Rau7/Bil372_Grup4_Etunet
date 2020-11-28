@@ -184,11 +184,11 @@ body{
         <input type="Submit" value="Login" style="margin-top: 5px;">
       </form>
       <label for="stu1">Student</label>
-      <form class="login-form" action="http://localhost/Bil372_Grup4_Etunet/index.php/enterence/signup_student/" method="post">
+      <form class="login-form" action="http://localhost/Bil372_Grup4_Etunet/index.php/Enterence/signup_student/" method="post">
           <input type="submit" value="Sign Up"/>
       </form>
       <label for="tch">Teacher</label>
-      <form class="login-form" action="http://localhost/Bil372_Grup4_Etunet/index.php/enterence/signup_teacher/" method="post">
+      <form class="login-form" action="http://localhost/Bil372_Grup4_Etunet/index.php/Enterence/signup_teacher/" method="post">
           <input type="submit" value="Sign Up"/>
       </form>
     </div>

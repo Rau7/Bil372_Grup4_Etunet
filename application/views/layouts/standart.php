@@ -12,7 +12,6 @@
                     <a href="http://localhost/Bil372_Grup4_Etunet/index.php/Courses">Courses</a>
                     <a href="#contact">Homework</a>
                     <a href="#about">Resources</a>
-                    
                     <a href="<?php echo MAIN; ?>Enterence/out">Out</a>
                     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
