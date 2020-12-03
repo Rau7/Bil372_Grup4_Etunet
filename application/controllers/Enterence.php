@@ -37,9 +37,10 @@ class Enterence extends CI_Controller {
           }
           else{
             $admin = $this->Login_model->getTeacher($this->input->post());
-
             $admin['admin_id'] = $admin['teacher_id'];
             $admin['type'] = "teacher";
+            $admin['courses'] = $this->Login_model->getCoursesOfTeacher($admin['teacher_id']);
+            
           }
           $this->session->set_userdata('admin',$admin);
           redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');

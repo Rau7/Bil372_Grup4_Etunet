@@ -3,7 +3,7 @@
         
         function getCoursesOfTeacherWithId($data){
 
-            return $this->db->query("SELECT course_id FROM given_courses WHERE teacher_id=".$this->db->escape($data)." ")->result_array();
+            return $this->db->query("SELECT * FROM given_courses WHERE teacher_id=".$this->db->escape($data)." ")->result_array();
         }
 
         function addCourse($data,$teacher_id){

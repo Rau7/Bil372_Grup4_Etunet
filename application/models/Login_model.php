@@ -29,6 +29,12 @@
             $this->db->query("INSERT INTO teachers SET teacher_name='".$data['name']."' , teacher_password='".$data['password']."', teacher_mail='".$data['mail']."'");
         }
 
+        function getCoursesOfTeacher($id){
+
+            return $this->db->query("SELECT * FROM courses INNER JOIN given_courses ON courses.course_id = given_courses.course_id WHERE given_courses.teacher_id ='".$id."' ")->result_array();
+
+        }
+
 
     }
 ?>
