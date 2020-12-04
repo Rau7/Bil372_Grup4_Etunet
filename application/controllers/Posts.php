@@ -119,15 +119,15 @@ class Posts extends CI_Controller {
 
 	}
 
-	public function delete_homework($hmw_id){
+	public function delete_post($post_id){
 
 		if(isset($this->session->userdata['admin']['admin_id'])){
 
-			$this->load->model("Homework_model");
+			$this->load->model("Posts_model");
 
-			$this->Homework_model->deleteHomework($hmw_id);
+			$this->Posts_model->deletePost($post_id);
 
-			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Teacher_homework','refresh');
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
 
 			
 		}

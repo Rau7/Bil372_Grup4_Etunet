@@ -12,6 +12,8 @@ class Teacher_homework extends CI_Controller {
 	    
 				$this->load->model("Courses_model");
 
+				$this->load->model("Posts_model");
+
 				$this->load->model("Login_model");
 
 	    		if($this->session->userdata['admin']['type'] === 'teacher'){
@@ -22,7 +24,7 @@ class Teacher_homework extends CI_Controller {
 					$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
 					$data['subview'] = "homework_list";
 					$data['type'] = 'teacher';
-					
+					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 					$this->load->view('layouts/standart',$data);
 
 				}
@@ -38,10 +40,11 @@ class Teacher_homework extends CI_Controller {
 	public function add_homework(){
 
 	  $this->load->model("Login_model");
+	  $this->load->model("Posts_model");
 	  $data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
 	  $data['subview'] = "add_homework";
 	  $data['type'] = 'teacher';
-
+	  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 	  $this->load->view('layouts/standart',$data);
 
 	}
@@ -72,6 +75,7 @@ class Teacher_homework extends CI_Controller {
 	public function update_homework($hmw_id){
 
 	  $this->load->model("Homework_model");
+	  $this->load->model("Posts_model");
 
 	  $homework = $this->Homework_model->getHomework($hmw_id);
 
@@ -81,7 +85,7 @@ class Teacher_homework extends CI_Controller {
 	  $data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
 	  $data['subview'] = "update_homework";
 	  $data['type'] = 'teacher';
-
+	  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 	  $this->load->view('layouts/standart',$data);
 
 	}

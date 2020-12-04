@@ -67,4 +67,9 @@ hr.rounded {
   border-top: 5px solid #34495e;
   border-radius: 5px;
 }
+
+div.left-pane {
+  
+  overflow: auto;
+}
 </style>
