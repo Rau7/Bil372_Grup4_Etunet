@@ -17,5 +17,10 @@
 
         }
 
+        function getCourseWithId($id){
+
+            return $this->db->query("SELECT * FROM courses WHERE course_id = '".$id."' ")->result_array();
+        }
+
     }
 ?>
