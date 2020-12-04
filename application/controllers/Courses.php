@@ -37,16 +37,19 @@ class Courses extends CI_Controller {
 					$data['courses'] = $courses;
 					$data['subview'] = "courses_list";
 					$data['type'] = 'student';
+
+					$all_courses = $this->Courses_model->getCourses($this->session->userdata['admin']['student_id']);
+
+					$data['all_courses'] = $all_courses;
+					$data['subview'] = "courses_list";
 					
 					$this->load->view('layouts/standart',$data);
+					
 				}
-				
 		   }
 		    else{
 		      redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 		    }
-	    	
-
 	}
 
 	public function add_course(){
@@ -69,11 +72,7 @@ class Courses extends CI_Controller {
 		else{
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 		}
-	  
-
 	}
-
-
 }
 
 ?>

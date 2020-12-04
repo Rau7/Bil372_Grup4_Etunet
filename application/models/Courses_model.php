@@ -20,5 +20,9 @@
 
             return $this->db->query("SELECT courses.* FROM courses, taken_courses WHERE courses.course_id = taken_courses.course_id and student_id=".$this->db->escape($data)." ")->result_array();
         }
+        function getCourses($data){
+
+            return $this->db->query("SELECT * FROM courses")->result_array();
+        }
     }
 ?>
