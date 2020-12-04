@@ -63,4 +63,8 @@ body {
     text-align: left;
   }
 }
+hr.rounded {
+  border-top: 5px solid #34495e;
+  border-radius: 5px;
+}
 </style>

@@ -12,6 +12,8 @@ class Dashboard extends CI_Controller {
 
 				$this->load->model('Courses_model');
 
+				$this->load->model('Posts_model');
+
 				$data['subview'] = "dashboard";
 
 				if($this->session->userdata['admin']['type'] === 'teacher'){
@@ -24,12 +26,15 @@ class Dashboard extends CI_Controller {
 						if(isset($this->session->userdata['admin']['current_course_id'])){
 
 							$data['current_course'] = $this->Courses_model->getCourseWithId($this->session->userdata['admin']['current_course_id'])[0];
+
+							$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 						}
 						else{
 							$admin = $this->session->userdata['admin'];
 							$admin['current_course_id']  = $data['courses'][0]['course_id'];
 							$this->session->set_userdata('admin',$admin);
 						    $data['current_course'] = $data['courses'][0];
+						    $data['posts'] = $this->Posts_model->getPostsOfCourse($data['courses'][0]['course_id']);
 						}
 						
 					}
