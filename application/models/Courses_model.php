@@ -24,5 +24,9 @@
 
             return $this->db->query("SELECT courses.* FROM courses WHERE courses.course_id NOT IN(SELECT courses.course_id FROM taken_courses,courses WHERE courses.course_id = taken_courses.course_id and taken_courses.student_id=".$this->db->escape($data).") ")->result_array();
         }
+        function enrollcourse($course_id,$student_id){
+
+            $this->db->query("INSERT INTO taken_courses SET course_id=".$course_id.", student_id=".$student_id."");
+        }
     }
 ?>

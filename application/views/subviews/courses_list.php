@@ -42,7 +42,7 @@
           <td><?php echo $course['course_name']; ?></td> 
           <td><?php echo $course['course_description']; ?></td> 
           <td><?php echo $course['course_short_desc']; ?></td> 
-          <td><a >Enroll</a></td>
+          <td><a href="<?php echo MAIN; ?>Courses/enroll_course/<?php echo $course['course_id']; ?>" >Enroll</a></td>
         </tr>
         <?php } ?>
     </tbody>
