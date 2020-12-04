@@ -30,6 +30,23 @@
                     <a class="nav-link" href="<?php echo MAIN; ?>Teacher_homework" style="color: #FFFFFF!important;">Homework</a>
                   </li>
                   <?php } ?>
+
+                  <?php if($type === 'student'){ ?>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF!important;">
+                      My Courses
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <?php foreach ($courses as $course) { ?>
+                         <a class="dropdown-item" href="<?php echo MAIN; ?>Dashboard/set_course/<?php echo $course['course_id']; ?>"><?php echo $course['course_name']; ?></a>
+                      <?php } ?>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?php echo MAIN; ?>Teacher_homework" style="color: #FFFFFF!important;">Homework</a>
+                  </li>
+                  <?php } ?>
+
                   <li class="nav-item">
                     <a class="nav-link" href="<?php echo MAIN; ?>Enterence/out" style="color: #FFFFFF!important;">Sign Out</a>
                   </li>

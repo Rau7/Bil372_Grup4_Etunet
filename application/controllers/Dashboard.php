@@ -17,8 +17,9 @@ class Dashboard extends CI_Controller {
 					$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
 					$data['type'] = 'teacher';
 				}
-
-
+				else{
+					$data['type'] = 'student';
+				}
 	    	    $this->load->view('layouts/standart',$data);
 
 			}
