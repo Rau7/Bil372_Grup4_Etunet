@@ -20,9 +20,9 @@
 
             return $this->db->query("SELECT courses.* FROM courses, taken_courses WHERE courses.course_id = taken_courses.course_id and student_id=".$this->db->escape($data)." ")->result_array();
         }
-        function getCourses($data){
+        function get_notEnrolled_Courses($data){
 
-            return $this->db->query("SELECT * FROM courses")->result_array();
+            return $this->db->query("SELECT courses.* FROM courses WHERE courses.course_id NOT IN(SELECT courses.course_id FROM taken_courses,courses WHERE courses.course_id = taken_courses.course_id and taken_courses.student_id=".$this->db->escape($data).") ")->result_array();
         }
     }
 ?>

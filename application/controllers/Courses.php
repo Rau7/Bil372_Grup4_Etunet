@@ -38,13 +38,13 @@ class Courses extends CI_Controller {
 					$data['subview'] = "courses_list";
 					$data['type'] = 'student';
 
-					$all_courses = $this->Courses_model->getCourses($this->session->userdata['admin']['student_id']);
+					$all_courses = $this->Courses_model->get_notEnrolled_Courses($this->session->userdata['admin']['student_id']);
 
 					$data['all_courses'] = $all_courses;
 					$data['subview'] = "courses_list";
 					
 					$this->load->view('layouts/standart',$data);
-					
+
 				}
 		   }
 		    else{
@@ -56,7 +56,6 @@ class Courses extends CI_Controller {
 	  $data['title'] = "Add Course";
 	  $data['subview'] = "add_course";
 	  $this->load->view('layouts/standart',$data);
-
 	}
 
 	public function real_add_course(){
