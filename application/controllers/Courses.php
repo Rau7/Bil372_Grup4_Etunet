@@ -31,7 +31,14 @@ class Courses extends CI_Controller {
 
 				}
 				else{
+
+					$courses = $this->Courses_model->getCoursesOfStudentWithId($this->session->userdata['admin']['student_id']);
+
+					$data['courses'] = $courses;
+					$data['subview'] = "courses_list";
+					$data['type'] = 'student';
 					
+					$this->load->view('layouts/standart',$data);
 				}
 				
 		   }
