@@ -8,7 +8,7 @@
         <th>Course Name</th>
         <th>Course Description</th>
         <th>Course Short Description</th>
-        <th>Remove</th>
+        <th>Drop</th>
       </tr>
     </thead>
     <tbody id="myTable">
@@ -17,7 +17,7 @@
           <td><?php echo $course['course_name']; ?></td> 
           <td><?php echo $course['course_description']; ?></td> 
           <td><?php echo $course['course_short_desc']; ?></td> 
-          <td><a >Remove</a></td>
+          <td><a >Drop</a></td>
         </tr>
         <?php } ?>
     </tbody>
