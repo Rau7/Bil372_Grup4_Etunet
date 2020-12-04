@@ -96,19 +96,19 @@ class Posts extends CI_Controller {
 
 	}
 
-	public function handle_update($hmw_id){
+	public function handle_update($post_id){
 
 		if(isset($this->session->userdata['admin']['admin_id'])){
 
-			$this->load->model("Homework_model");
+			$this->load->model("Posts_model");
 
-			$homework = $this->input->post();
+			$post = $this->input->post();
 
 			$course_id = $this->session->userdata['admin']['current_course_id'];
 
-			$this->Homework_model->updateHomework($homework,$course_id,$hmw_id);
+			$this->Posts_model->updatePost($post,$course_id,$post_id);
 
-			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Teacher_homework','refresh');
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
 
 			
 		}

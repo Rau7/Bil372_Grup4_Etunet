@@ -6,7 +6,7 @@
         <input type="text" class="form-control" id="post_title" aria-describedby="emailHelp" placeholder="Post Title" name="post_title">
       </div>
       <div class="form-group">
-        <label for="post_short_desc">Post Title</label>
+        <label for="post_short_desc">Post Short Description</label>
         <input type="text" class="form-control" id="post_short_desc" aria-describedby="emailHelp" placeholder="Post Short Description" name="post_short_desc">
       </div>
       <div class="form-group">
