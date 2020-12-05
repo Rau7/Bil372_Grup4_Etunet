@@ -117,7 +117,7 @@ class Teacher_resource extends CI_Controller {
 
 			$this->Resource_model->deleteResource($resource_id);
 
-			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Teacher_homework','refresh');
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Teacher_resource','refresh');
 
 			
 		}
