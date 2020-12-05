@@ -10,17 +10,42 @@ class Dashboard extends CI_Controller {
 
 			$this->load->model('Login_model');
 
-			$data['subview'] = "dashboard";
+				$this->load->model('Courses_model');
 
-			if($this->session->userdata['admin']['type'] === 'teacher'){
+				$this->load->model('Posts_model');
 
-				$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
-				$data['type'] = 'teacher';
-			}
+				$data['subview'] = "dashboard";
+
+				if($this->session->userdata['admin']['type'] === 'teacher'){
+
+					$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
+					if(empty($data['courses'])){
+						redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Courses','refresh');
+					}
+					else{
+						if(isset($this->session->userdata['admin']['current_course_id'])){
+
+							$data['current_course'] = $this->Courses_model->getCourseWithId($this->session->userdata['admin']['current_course_id'])[0];
+
+							$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+						}
+						else{
+							$admin = $this->session->userdata['admin'];
+							$admin['current_course_id']  = $data['courses'][0]['course_id'];
+							$this->session->set_userdata('admin',$admin);
+						    $data['current_course'] = $data['courses'][0];
+						    $data['posts'] = $this->Posts_model->getPostsOfCourse($data['courses'][0]['course_id']);
+						}
+						
+					}
+					$data['type'] = 'teacher';
+				}
+
 			else{
 				$data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 				$data['type'] = 'student';
 			}
+          $data['subview'] = "dashboard";
     	    $this->load->view('layouts/standart',$data);
 
 		}
@@ -30,7 +55,6 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function set_course($course_id){
-		
 		$admin = $this->session->userdata['admin'];
 		$admin['current_course_id']  = $course_id;
 		$this->session->set_userdata('admin',$admin);

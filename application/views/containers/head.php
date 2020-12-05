@@ -1,4 +1,4 @@
-		<title>Callback Piazza</title>
+		<title>Etunet</title>
         <meta charset="utf-8" />
 
         <!-- CSS -->
@@ -62,5 +62,14 @@ body {
     display: block;
     text-align: left;
   }
+}
+hr.rounded {
+  border-top: 5px solid #34495e;
+  border-radius: 5px;
+}
+
+div.left-pane {
+  
+  overflow: auto;
 }
 </style>

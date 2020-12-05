@@ -65,13 +65,25 @@
             <div id="navigation">
                 <div id="interactors" style="margin-top: 16px;">
                     <!-- buttons and search -->
-                    <a href="#" class="btn">New question form</a>
-                    <input type="text" name="search" id="search"
-                        placeholder="Search questions..." />
+                    <a href="<?php echo MAIN; ?>Posts/add_post" class="btn">New Post</a>
+                    <h1 style="padding-top: 13px; font-size: 2.00rem; text-align: center;">Posts</h1>
                 </div>
 
-                <div id="left-pane">
-                    <!-- add questions to this container -->
+                <div id="left-pane" style="overflow-y: scroll;" >
+                    <hr class="rounded">
+                    <?php foreach ($posts as $post) { ?>
+                        <div class="card" style="width: auto;">
+                          <div class="card-body" style="background-color: #ecf0f1;">
+                            <h5 class="card-title"><?php echo $post['post_title']; ?></h5>
+                            <p class="card-text"><?php echo $post['post_short_desc']; ?></p>
+                            <a href="<?php echo MAIN; ?>Posts/show_post/<?php echo $post['post_id']; ?>" class="card-link">See Post</a>
+                            <?php if($type === 'teacher'){ ?>
+                                <a href="<?php echo MAIN; ?>Posts/delete_post/<?php echo $post['post_id']; ?>" class="card-link">Delete Post</a>
+                            <?php } ?>
+                          </div>
+                        </div>
+                        <hr class="rounded">
+                    <?php } ?>
                 </div>
             </div>
 
