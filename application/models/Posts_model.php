@@ -5,6 +5,10 @@
 
             return $this->db->query("SELECT * FROM posts WHERE post_course_id=".$data." ")->result_array();
         }
+        function getPostsOfStudent($data){
+
+            return $this->db->query("SELECT * FROM posts WHERE post_student_id=".$data." ")->result_array();
+        }
 
         function getPostWithId($data){
 
