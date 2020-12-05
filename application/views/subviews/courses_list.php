@@ -17,7 +17,7 @@
           <td><?php echo $course['course_name']; ?></td> 
           <td><?php echo $course['course_description']; ?></td> 
           <td><?php echo $course['course_short_desc']; ?></td> 
-          <td><a >Drop</a></td>
+          <td><a href="<?php echo MAIN; ?>Courses/drop_course/<?php echo $course['course_id']; ?>" >Drop</a></td>
         </tr>
         <?php } ?>
     </tbody>
