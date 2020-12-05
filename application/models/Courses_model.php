@@ -28,5 +28,9 @@
 
             $this->db->query("INSERT INTO taken_courses SET course_id=".$course_id.", student_id=".$student_id."");
         }
+        function dropcourse($course_id,$student_id){
+
+            $this->db->query("DELETE FROM taken_courses WHERE course_id=".$course_id." and student_id=".$student_id."");
+        }
     }
 ?>

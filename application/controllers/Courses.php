@@ -86,6 +86,20 @@ class Courses extends CI_Controller {
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 		}
 	}
+
+	public function drop_course($course_id){
+	  if(isset($this->session->userdata['admin']['admin_id'])){
+
+			$this->load->model("Courses_model");
+
+			$this->Courses_model->dropcourse($course_id,$this->session->userdata['admin']['admin_id']);
+
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Courses','refresh');
+		}
+		else{
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
+		}
+	}
 }
 
 ?>
