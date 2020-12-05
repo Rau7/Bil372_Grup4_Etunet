@@ -43,6 +43,25 @@ class Dashboard extends CI_Controller {
 
 			else{
 				$data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
+				if(empty($data['courses'])){
+						redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Courses','refresh');
+					}
+					else{
+						if(isset($this->session->userdata['admin']['current_course_id'])){
+
+							$data['current_course'] = $this->Courses_model->getCourseWithId($this->session->userdata['admin']['current_course_id'])[0];
+
+							$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+						}
+						else{
+							$admin = $this->session->userdata['admin'];
+							$admin['current_course_id']  = $data['courses'][0]['course_id'];
+							$this->session->set_userdata('admin',$admin);
+						    $data['current_course'] = $data['courses'][0];
+						    $data['posts'] = $this->Posts_model->getPostsOfCourse($data['courses'][0]['course_id']);
+						}
+						
+					}
 				$data['type'] = 'student';
 			}
           $data['subview'] = "dashboard";
