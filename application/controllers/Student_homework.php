@@ -14,6 +14,9 @@ class Student_homework extends CI_Controller {
 
 				$this->load->model("Login_model");
 
+				$this->load->model("Posts_model");
+
+
 	    		if($this->session->userdata['admin']['type'] === 'student'){
 	    			
 					$homeworks = $this->Homework_model->getHomeworks($this->session->userdata['admin']['current_course_id']);
@@ -22,6 +25,7 @@ class Student_homework extends CI_Controller {
 					$data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 					$data['subview'] = "homework_list_student";
 					$data['type'] = 'student';
+					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 					
 					$this->load->view('layouts/standart',$data);
 
@@ -40,6 +44,7 @@ class Student_homework extends CI_Controller {
 	public function detail_homework($hmw_id){
 
 	  $this->load->model("Homework_model");
+	  $this->load->model("Posts_model");
 
 	  $homework = $this->Homework_model->getHomework($hmw_id);
 
@@ -49,8 +54,8 @@ class Student_homework extends CI_Controller {
 	  $data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 	  $data['subview'] = "detail_homework";
 	  $data['type'] = 'student';
-
-	  $this->load->view('layouts/standart',$data);
+      $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+      $this->load->view('layouts/standart',$data);
 
 	}
 
