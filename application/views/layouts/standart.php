@@ -45,6 +45,10 @@
                   <li class="nav-item">
                     <a class="nav-link" href="<?php echo MAIN; ?>Student_homework" style="color: #FFFFFF!important;">Homework</a>
                   </li>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?php echo MAIN; ?>Student_homework" style="color: #FFFFFF!important;">Resources</a>
+                  </li>
                   <?php } ?>
 
                   <li class="nav-item">
