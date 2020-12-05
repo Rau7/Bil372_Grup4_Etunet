@@ -31,22 +31,31 @@ class Courses extends CI_Controller {
 
 				}
 				else{
+
+					$courses = $this->Courses_model->getCoursesOfStudentWithId($this->session->userdata['admin']['student_id']);
+
+					$data['courses'] = $courses;
+					$data['subview'] = "courses_list";
+					$data['type'] = 'student';
+
+					$all_courses = $this->Courses_model->get_notEnrolled_Courses($this->session->userdata['admin']['student_id']);
+
+					$data['all_courses'] = $all_courses;
+					$data['subview'] = "courses_list";
 					
+					$this->load->view('layouts/standart',$data);
+
 				}
-				
 		   }
 		    else{
 		      redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 		    }
-	    	
-
 	}
 
 	public function add_course(){
 	  $data['title'] = "Add Course";
 	  $data['subview'] = "add_course";
 	  $this->load->view('layouts/standart',$data);
-
 	}
 
 	public function real_add_course(){
@@ -62,11 +71,35 @@ class Courses extends CI_Controller {
 		else{
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 		}
-	  
-
 	}
 
+	public function enroll_course($course_id){
+	  if(isset($this->session->userdata['admin']['admin_id'])){
 
+			$this->load->model("Courses_model");
+
+			$this->Courses_model->enrollcourse($course_id,$this->session->userdata['admin']['admin_id']);
+
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Courses','refresh');
+		}
+		else{
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
+		}
+	}
+
+	public function drop_course($course_id){
+	  if(isset($this->session->userdata['admin']['admin_id'])){
+
+			$this->load->model("Courses_model");
+
+			$this->Courses_model->dropcourse($course_id,$this->session->userdata['admin']['admin_id']);
+
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Courses','refresh');
+		}
+		else{
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
+		}
+	}
 }
 
 ?>

@@ -6,9 +6,9 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{	
-			if(isset($this->session->userdata['admin']['admin_id'])){
+		if(isset($this->session->userdata['admin']['admin_id'])){
 
-				$this->load->model('Login_model');
+			$this->load->model('Login_model');
 
 				$this->load->model('Courses_model');
 
@@ -41,15 +41,17 @@ class Dashboard extends CI_Controller {
 					$data['type'] = 'teacher';
 				}
 
-
-	    	    $this->load->view('layouts/standart',$data);
-
+			else{
+				$data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
+				$data['type'] = 'student';
 			}
-	    	else{
-	      		redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
-	    	}
-	    	
+          $data['subview'] = "dashboard";
+    	    $this->load->view('layouts/standart',$data);
 
+		}
+    	else{
+      		redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
+    	}
 	}
 
 	public function set_course($course_id){
@@ -58,8 +60,6 @@ class Dashboard extends CI_Controller {
 		$this->session->set_userdata('admin',$admin);
 		redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
 	}
-
-
 }
 
 ?>
