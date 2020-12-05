@@ -29,7 +29,11 @@
                   <li class="nav-item">
                     <a class="nav-link" href="<?php echo MAIN; ?>Teacher_homework" style="color: #FFFFFF!important;">Homework</a>
                   </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="<?php echo MAIN; ?>Teacher_resources" style="color: #FFFFFF!important;">Resources</a>
+                  </li>
                   <?php } ?>
+
                   <li class="nav-item">
                     <a class="nav-link" href="<?php echo MAIN; ?>Enterence/out" style="color: #FFFFFF!important;">Sign Out</a>
                   </li>
