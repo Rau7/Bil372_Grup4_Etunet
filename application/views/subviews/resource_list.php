@@ -1,4 +1,4 @@
-<p class="card-description" style="font-size:30px"><b> Homeworks</b> </p>
+<p class="card-description" style="font-size:30px"><b> Resources</b> </p>
                     <div style="margin-bottom: 30px;">
                       <a href="<?php echo MAIN; ?>Teacher_resource/add_resource" >Add Resource</a>
                     </div>
