@@ -47,7 +47,7 @@
                   </li>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo MAIN; ?>Student_homework" style="color: #FFFFFF!important;">Resources</a>
+                    <a class="nav-link" href="<?php echo MAIN; ?>Student_resource" style="color: #FFFFFF!important;">Resources</a>
                   </li>
                   <?php } ?>
 
