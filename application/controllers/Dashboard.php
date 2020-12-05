@@ -6,28 +6,27 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{	
-			if(isset($this->session->userdata['admin']['admin_id'])){
+		if(isset($this->session->userdata['admin']['admin_id'])){
 
-				$this->load->model('Login_model');
+			$this->load->model('Login_model');
 
-				$data['subview'] = "dashboard";
+			$data['subview'] = "dashboard";
 
-				if($this->session->userdata['admin']['type'] === 'teacher'){
+			if($this->session->userdata['admin']['type'] === 'teacher'){
 
-					$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
-					$data['type'] = 'teacher';
-				}
-				else{
-					$data['type'] = 'student';
-				}
-	    	    $this->load->view('layouts/standart',$data);
-
+				$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
+				$data['type'] = 'teacher';
 			}
-	    	else{
-	      		redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
-	    	}
-	    	
+			else{
+				$data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
+				$data['type'] = 'student';
+			}
+    	    $this->load->view('layouts/standart',$data);
 
+		}
+    	else{
+      		redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
+    	}
 	}
 
 	public function set_course($course_id){
@@ -37,8 +36,6 @@ class Dashboard extends CI_Controller {
 		$this->session->set_userdata('admin',$admin);
 		redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
 	}
-
-
 }
 
 ?>
