@@ -43,7 +43,7 @@
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo MAIN; ?>Teacher_homework" style="color: #FFFFFF!important;">Homework</a>
+                    <a class="nav-link" href="<?php echo MAIN; ?>Student_homework" style="color: #FFFFFF!important;">Homework</a>
                   </li>
                   <?php } ?>
 
