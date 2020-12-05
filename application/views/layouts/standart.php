@@ -17,7 +17,31 @@
                     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                     </a>
+<<<<<<< Updated upstream
     </div>
+=======
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <?php foreach ($courses as $course) { ?>
+                         <a class="dropdown-item" href="<?php echo MAIN; ?>Dashboard/set_course/<?php echo $course['course_id']; ?>"><?php echo $course['course_name']; ?></a>
+                      <?php } ?>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?php echo MAIN; ?>Student_homework" style="color: #FFFFFF!important;">Homework</a>
+                  </li>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?php echo MAIN; ?>Student_homework" style="color: #FFFFFF!important;">Resources</a>
+                  </li>
+                  <?php } ?>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?php echo MAIN; ?>Enterence/out" style="color: #FFFFFF!important;">Sign Out</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+>>>>>>> Stashed changes
         </header>
 
         <div id="wrapper">
