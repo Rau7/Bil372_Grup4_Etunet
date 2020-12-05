@@ -2,47 +2,47 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Teacher_homework extends CI_Controller {
 
-	
+
 
 	public function index()
-	{	
-			if(isset($this->session->userdata['admin']['admin_id'])){
+	{
+		if(isset($this->session->userdata['admin']['admin_id'])){
 
-				$this->load->model("Homework_model");
-	    
-				$this->load->model("Courses_model");
+			$this->load->model("Homework_model");
 
-				$this->load->model("Login_model");
+			$this->load->model("Courses_model");
 
-	    		if($this->session->userdata['admin']['type'] === 'teacher'){
-	    			
-					$homeworks = $this->Homework_model->getHomeworks($this->session->userdata['admin']['current_course_id']);
+			$this->load->model("Login_model");
 
-					$data['homeworks'] = $homeworks;
-					$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
-					$data['subview'] = "homework_list";
-					$data['type'] = 'teacher';
-					
-					$this->load->view('layouts/standart',$data);
+			if($this->session->userdata['admin']['type'] === 'teacher'){
 
-				}
-				
-		   }
-		    else{
-		      redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
-		    }
-	    	
+				$homeworks = $this->Homework_model->getHomeworks($this->session->userdata['admin']['current_course_id']);
+
+				$data['homeworks'] = $homeworks;
+				$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
+				$data['subview'] = "homework_list";
+				$data['type'] = 'teacher';
+
+				$this->load->view('layouts/standart',$data);
+
+			}
+
+		}
+		else{
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
+		}
+
 
 	}
 
 	public function add_homework(){
 
-	  $this->load->model("Login_model");
-	  $data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
-	  $data['subview'] = "add_homework";
-	  $data['type'] = 'teacher';
+		$this->load->model("Login_model");
+		$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
+		$data['subview'] = "add_homework";
+		$data['type'] = 'teacher';
 
-	  $this->load->view('layouts/standart',$data);
+		$this->load->view('layouts/standart',$data);
 
 	}
 
@@ -60,29 +60,29 @@ class Teacher_homework extends CI_Controller {
 
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Teacher_homework','refresh');
 
-			
+
 		}
 		else{
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 		}
-	  
+
 
 	}
 
 	public function update_homework($hmw_id){
 
-	  $this->load->model("Homework_model");
+		$this->load->model("Homework_model");
 
-	  $homework = $this->Homework_model->getHomework($hmw_id);
+		$homework = $this->Homework_model->getHomework($hmw_id);
 
-	  $data['homework'] = $homework;
+		$data['homework'] = $homework;
 
-	  $this->load->model("Login_model");
-	  $data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
-	  $data['subview'] = "update_homework";
-	  $data['type'] = 'teacher';
+		$this->load->model("Login_model");
+		$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
+		$data['subview'] = "update_homework";
+		$data['type'] = 'teacher';
 
-	  $this->load->view('layouts/standart',$data);
+		$this->load->view('layouts/standart',$data);
 
 	}
 
@@ -100,12 +100,12 @@ class Teacher_homework extends CI_Controller {
 
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Teacher_homework','refresh');
 
-			
+
 		}
 		else{
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 		}
-	  
+
 
 	}
 
@@ -119,12 +119,12 @@ class Teacher_homework extends CI_Controller {
 
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Teacher_homework','refresh');
 
-			
+
 		}
 		else{
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 		}
-	  
+
 
 	}
 
@@ -133,4 +133,3 @@ class Teacher_homework extends CI_Controller {
 }
 
 ?>
-
