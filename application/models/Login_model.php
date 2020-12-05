@@ -29,6 +29,20 @@
             $this->db->query("INSERT INTO teachers SET teacher_name='".$data['name']."' , teacher_password='".$data['password']."', teacher_mail='".$data['mail']."'");
         }
 
+<<<<<<< Updated upstream
+=======
+        function getCoursesOfTeacher($id){
+
+            return $this->db->query("SELECT * FROM courses INNER JOIN given_courses ON courses.course_id = given_courses.course_id WHERE given_courses.teacher_id ='".$id."' ")->result_array();
+
+        }
+        function getCoursesOfStudent($id){
+
+            return $this->db->query("SELECT * FROM courses INNER JOIN taken_courses ON courses.course_id = taken_courses.course_id WHERE taken_courses.student_id ='".$id."' ")->result_array();
+
+        }
+
+>>>>>>> Stashed changes
 
     }
 ?>
