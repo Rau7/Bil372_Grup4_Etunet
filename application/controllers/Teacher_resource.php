@@ -12,6 +12,8 @@ class Teacher_resource extends CI_Controller {
 	    
 				$this->load->model("Courses_model");
 
+				$this->load->model("Posts_model");
+
 				$this->load->model("Login_model");
 
 	    		if($this->session->userdata['admin']['type'] === 'teacher'){
@@ -22,7 +24,7 @@ class Teacher_resource extends CI_Controller {
 					$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
 					$data['subview'] = "resource_list";
 					$data['type'] = 'teacher';
-					
+					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 					$this->load->view('layouts/standart',$data);
 
 				}
@@ -42,6 +44,8 @@ class Teacher_resource extends CI_Controller {
 	  $data['subview'] = "add_resource";
 	  $data['type'] = 'teacher';
 
+	  $this->load->model("Posts_model");
+	  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 	  $this->load->view('layouts/standart',$data);
 
 	}
