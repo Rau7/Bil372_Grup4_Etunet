@@ -161,6 +161,30 @@ class Posts extends CI_Controller {
 	  
 
 	}
+	public function add_comment($post_id){
+	  if(isset($this->session->userdata['admin']['admin_id'])){
+
+	    $this->load->model("Posts_model");
+
+	    $post = $this->input->post();
+
+	    $added_id =  $this->session->userdata['admin']['admin_id'];
+
+	    $added_type = $this->session->userdata['admin']['type'];
+
+	    if($this->session->userdata['admin']['type'] === 'teacher'){
+	      $this->Posts_model->addCommentTeacher($post,$post_id,$added_id,$added_type);
+	    }
+	    else{
+	      $this->Posts_model->addCommentStudent($post,$post_id,$added_id,$added_type);
+	    }
+	    
+	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
+	  }
+	  else{
+	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
+	  }
+	}
 
 }
 
