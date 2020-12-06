@@ -39,6 +39,9 @@
             
         }
 
-
+        function getCommentsWithPostId($post_id){
+            return $this->db->query("SELECT * FROM comments WHERE comment_post_id = ".$post_id." ")->result_array();
+        }
+        
     }
 ?>
