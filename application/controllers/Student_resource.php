@@ -12,6 +12,8 @@ class Student_resource extends CI_Controller {
 	    
 				$this->load->model("Courses_model");
 
+				$this->load->model("Posts_model");
+
 				$this->load->model("Login_model");
 
 	    		if($this->session->userdata['admin']['type'] === 'student'){
@@ -22,7 +24,7 @@ class Student_resource extends CI_Controller {
 					$data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 					$data['subview'] = "resource_list_student";
 					$data['type'] = 'student';
-					
+					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 					$this->load->view('layouts/standart',$data);
 
 				}
@@ -39,9 +41,11 @@ class Student_resource extends CI_Controller {
 public function add_resource(){
 
 	  $this->load->model("Login_model");
+	  $this->load->model("Posts_model");
 	  $data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 	  $data['subview'] = "add_resource_student";
 	  $data['type'] = 'student';
+	  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 
 	  $this->load->view('layouts/standart',$data);
 
@@ -73,6 +77,7 @@ public function add_resource(){
 	public function update_resource($hmw_id){
 
 	  $this->load->model("Resource_Student_model");
+	  $this->load->model("Posts_model");
 
 	  $resource = $this->Resource_Student_model->getResource($hmw_id);
 
@@ -82,6 +87,7 @@ public function add_resource(){
 	  $data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 	  $data['subview'] = "update_resource_student";
 	  $data['type'] = 'student';
+	  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 
 	  $this->load->view('layouts/standart',$data);
 
