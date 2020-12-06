@@ -57,12 +57,15 @@ class Posts extends CI_Controller {
 		  $data['subview'] = "add_post";
 		  $data['type'] = 'teacher';
 		  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+		  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
 	  }
 	  else if($this->session->userdata['admin']['type'] === 'student'){
 		  $data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 		  $data['subview'] = "add_post";
 		  $data['type'] = 'student';
 		  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+		  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
+
 	  }
 
 	  $this->load->view('layouts/standart',$data);
@@ -110,12 +113,14 @@ class Posts extends CI_Controller {
 		  $data['subview'] = "update_post";
 		  $data['type'] = 'teacher';
 		  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+		  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
 	  }
 	  else if($this->session->userdata['admin']['type'] === 'student'){
 		  $data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 		  $data['subview'] = "update_post";
 		  $data['type'] = 'student';
 		  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+		  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
 	  }
 
       $data['post'] = $this->Posts_model->getPostWithId($post_id)[0];
