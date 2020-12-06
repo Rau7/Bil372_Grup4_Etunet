@@ -185,6 +185,19 @@ class Posts extends CI_Controller {
 	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 	  }
 	}
+	public function delete_comment($comment_id){
+	  if(isset($this->session->userdata['admin']['admin_id'])){
+
+	    $this->load->model("Posts_model");
+
+	    $this->Posts_model->deleteComment($comment_id);
+
+	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Student_resource','refresh');
+	  }
+	  else{
+	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
+	  }
+	}
 
 }
 
