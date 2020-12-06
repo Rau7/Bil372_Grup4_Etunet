@@ -39,6 +39,7 @@ class Dashboard extends CI_Controller {
 						
 					}
 					$data['type'] = 'teacher';
+					 $data['added_id'] = $this->session->userdata['admin']['admin_id'];
 				}
 
 			else{
@@ -63,6 +64,7 @@ class Dashboard extends CI_Controller {
 						
 					}
 				$data['type'] = 'student';
+				$data['added_id'] = $this->session->userdata['admin']['admin_id'];
 			}
           $data['subview'] = "dashboard";
     	    $this->load->view('layouts/standart',$data);

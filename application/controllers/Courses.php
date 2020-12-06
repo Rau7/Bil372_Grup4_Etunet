@@ -10,6 +10,7 @@ class Courses extends CI_Controller {
 
 				$this->load->model("Courses_model");
 	    		$this->load->model("Posts_model");
+	    		$this->load->model('Login_model');
 
 
 	    		if($this->session->userdata['admin']['type'] === 'teacher'){
@@ -27,6 +28,7 @@ class Courses extends CI_Controller {
 
 					
 					$data["title"]= "Profil";
+					$data['added_id'] = $this->session->userdata['admin']['admin_id'];
 				
 					$this->load->view('layouts/standart',$data);
 
@@ -44,6 +46,7 @@ class Courses extends CI_Controller {
 					$data['all_courses'] = $all_courses;
 					$data['subview'] = "courses_list";
 					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+					$data['added_id'] = $this->session->userdata['admin']['admin_id'];
 					
 					$this->load->view('layouts/standart',$data);
 
