@@ -54,6 +54,9 @@
         function addCommentStudent($data,$post_id,$added_id,$added_type){
             $this->db->query("INSERT INTO comments SET comment_added_id='".$added_id."', comment_post_id='".$post_id."', comment_date=CURRENT_TIMESTAMP() , comment_desc=".$this->db->escape($data['comment_desc']).",comment_added_type='".$added_type."'");
         }
+        function deleteComment($comment_id){
+            $this->db->query("DELETE FROM comments WHERE comment_id = ".$comment_id." ");
+        }
         
     }
 ?>
