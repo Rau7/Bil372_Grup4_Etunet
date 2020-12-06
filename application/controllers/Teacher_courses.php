@@ -47,8 +47,6 @@ class Teacher_courses extends CI_Controller {
             $this->session->userdata['admin']['admin_id'];
 
 
-            $course_id = $this->session->userdata['admin']['current_course_id'];
-
             $this->Teacher_all_courses_model->addCourse($course,$this->session->userdata['admin']['admin_id']);
 
             redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Teacher_courses','refresh');
