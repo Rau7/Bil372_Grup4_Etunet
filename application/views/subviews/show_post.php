@@ -41,3 +41,11 @@
       </div>
     </div>
 <?php } ?>
+
+<hr class="rounded" style="width: 250%;">
+<form action="<?php echo MAIN; ?>Posts/add_comment/<?php echo $post['post_id']; ?>" method="POST">
+    <div class="form-group">
+        <textarea name="comment_desc" placeholder="Your Comment..."></textarea>
+    </div>
+    <input style="background-color: #34495E!important;color: rgb(255,255,255);" type="Submit" value="Add Comment" style="margin-top: 5px;">
+</form>
