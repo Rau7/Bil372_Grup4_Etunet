@@ -25,7 +25,8 @@ class Posts extends CI_Controller {
 		  $data['subview'] = "show_post";
 		  $data['type'] = 'teacher';
 		  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
-
+		  $data['comments'] = $this->Posts_model->getCommentsWithPostId($post_id);
+		  $data['comment_added_name'] = $this->Posts_model->getAddedNameWithTeacherId($post_id);
 		  $this->load->view('layouts/standart',$data);
 	   }
 	   else if($this->session->userdata['admin']['type'] === 'student'){
@@ -36,16 +37,15 @@ class Posts extends CI_Controller {
 		  $data['post'] = $this->Posts_model->getPostWithId($post_id)[0];
 		  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
 
-
 		  $data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 		  $data['subview'] = "show_post";
 		  $data['type'] = 'student';
 		  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+		  $data['comments'] = $this->Posts_model->getCommentsWithPostId($post_id);
 
+		  $data['comment_added_name'] = $this->Posts_model->getAddedNameWithStudentId($post_id);
 		  $this->load->view('layouts/standart',$data);
 	   }
-
-
 	}
 
 	public function add_post(){
@@ -87,11 +87,7 @@ class Posts extends CI_Controller {
 			else{
 				$this->Posts_model->addPostStudent($post,$course_id,$added_id);
 			}
-			
-
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
-
-			
 		}
 		else{
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
@@ -165,8 +161,6 @@ class Posts extends CI_Controller {
 	  
 
 	}
-
-
 
 }
 
