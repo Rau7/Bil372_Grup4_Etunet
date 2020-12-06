@@ -42,6 +42,9 @@
         function getCommentsWithPostId($post_id){
             return $this->db->query("SELECT * FROM comments WHERE comment_post_id = ".$post_id." ")->result_array();
         }
+        function getAddedNameWithStudentId($post_id){
+            return $this->db->query("SELECT student_name FROM students,comments,posts WHERE comment_post_id = ".$post_id." and comment_added_id = student_id ")->result_array();
+        }
         
     }
 ?>
