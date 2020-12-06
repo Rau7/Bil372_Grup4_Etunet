@@ -45,6 +45,9 @@
         function getAddedNameWithStudentId($post_id){
             return $this->db->query("SELECT student_name FROM students,comments,posts WHERE comment_post_id = ".$post_id." and comment_added_id = student_id ")->result_array();
         }
+        function getAddedNameWithTeacherId($post_id){
+            return $this->db->query("SELECT teacher_name FROM teachers,comments,posts WHERE comment_post_id = ".$post_id." and comment_added_id = teacher_id ")->result_array();
+        }
         
     }
 ?>
