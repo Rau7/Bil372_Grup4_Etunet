@@ -15,7 +15,7 @@
 <hr class="rounded" style="width: 250%;">
 
 <h1>Comments</h1>
-<?php foreach ($comments as $comment) { ?>
+<?php foreach ($real_comments as $comment) { ?>
     <div class="card" style="width: 250%;">
       <div class="card-body">
         <?php if($comment['comment_added_id'] == $added_id || $type === 'teacher'){ ?>
@@ -25,11 +25,11 @@
         <blockquote class="blockquote mb-0">
           <p><?php echo $comment['comment_desc']; ?></p>
           <p><?php echo $comment['comment_date']; ?></p>
-          <?php if($comment['comment_added_type'] === 'teacher'){ ?>
-            <footer class="blockquote-footer"> <cite title="Source Title"><?php echo $comment_added_name[0]['teacher_name']; ?></cite></footer>
+          <?php if(!empty($comment['teacher'])){ ?>
+            <footer class="blockquote-footer"> <cite title="Source Title"><?php echo $comment['teacher']['teacher_name']; ?></cite></footer>
           <?php } ?>
-          <?php if($comment['comment_added_type'] === 'student'){ ?>
-            <footer class="blockquote-footer"> <cite title="Source Title"><?php echo $comment_added_name[0]['student_name']; ?></cite></footer>
+          <?php if(!empty($comment['student'])){ ?>
+            <footer class="blockquote-footer"> <cite title="Source Title"><?php echo $comment['student']['student_name']; ?></cite></footer>
           <?php } ?>
         </blockquote>
 

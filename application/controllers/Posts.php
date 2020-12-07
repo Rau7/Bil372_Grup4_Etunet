@@ -26,6 +26,30 @@ class Posts extends CI_Controller {
 		  $data['type'] = 'teacher';
 		  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 		  $data['comments'] = $this->Posts_model->getCommentsWithPostId($post_id);
+
+
+		  $data['real_comments'] = array();
+		  $counter = 0;
+		  foreach ($data['comments'] as $comment) {
+		  	
+		  	if($comment['comment_added_type'] === 'teacher'){
+
+		  		$data['real_comments'][$counter] = $comment;
+		  		$data['real_comments'][$counter]['teacher'] = $this->Login_model->getTeacherWithId($comment['comment_added_id']); 
+
+		  		
+		  	}
+		  	else{
+		  		$data['real_comments'][$counter] = $comment;
+		  		$data['real_comments'][$counter]['student'] = $this->Login_model->getStudentWithId($comment['comment_added_id']); 
+		  	}
+
+		  	$counter++;
+
+		  }
+
+
+
 		  $data['comment_added_name'] = $this->Posts_model->getAddedNameWithTeacherId($post_id);
 		  $this->load->view('layouts/standart',$data);
 	   }
@@ -184,7 +208,8 @@ class Posts extends CI_Controller {
 	      $this->Posts_model->addCommentStudent($post,$post_id,$added_id,$added_type);
 	    }
 	    
-	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
+
+	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Posts/show_post/'.$post_id.'','refresh');
 	  }
 	  else{
 	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
@@ -197,7 +222,7 @@ class Posts extends CI_Controller {
 
 	    $this->Posts_model->deleteComment($comment_id);
 
-	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
+	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Posts/show_post/'.$post_id.'','refresh');
 	  }
 	  else{
 	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');

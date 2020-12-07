@@ -5,6 +5,18 @@
 
             return $this->db->query("SELECT * FROM students WHERE student_mail=".$this->db->escape($data['mail'])." AND student_password='".$data['password']."'LIMIT 1")->row_array(0,"array");
         }
+
+        function getStudentWithId($data){
+
+            return $this->db->query("SELECT * FROM students WHERE student_id=".$data." LIMIT 1")->row_array(0,"array");
+        }
+
+        function getTeacherWithId($data){
+
+            return $this->db->query("SELECT * FROM teachers WHERE teacher_id=".$data." LIMIT 1")->row_array(0,"array");
+        }
+
+
         function getStudents(){
 
             return $this->db->query("SELECT * FROM students")->result_array();

@@ -17,14 +17,22 @@ class Student_resource extends CI_Controller {
 				$this->load->model("Login_model");
 
 	    		if($this->session->userdata['admin']['type'] === 'student'){
-	    			
-					$resources = $this->Resource_Student_model->getResources($this->session->userdata['admin']['current_course_id']);
+
+	    			if(!isset($this->session->userdata['admin']['current_course_id'])){
+						
+						$resources = array();
+						$data['posts'] = array();
+					}
+					else{
+						$resources = $this->Resource_Student_model->getResources($this->session->userdata['admin']['current_course_id']);
+						$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+					}
+					
 
 					$data['resources'] = $resources;
 					$data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 					$data['subview'] = "resource_list_student";
 					$data['type'] = 'student';
-					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 					$data['added_id'] = $this->session->userdata['admin']['admin_id'];
 					$this->load->view('layouts/standart',$data);
 

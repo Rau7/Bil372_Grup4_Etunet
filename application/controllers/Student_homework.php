@@ -19,13 +19,23 @@ class Student_homework extends CI_Controller {
 
 	    		if($this->session->userdata['admin']['type'] === 'student'){
 	    			
-					$homeworks = $this->Homework_model->getHomeworks($this->session->userdata['admin']['current_course_id']);
+	    			if(!isset($this->session->userdata['admin']['current_course_id'])){
+						
+						$homeworks = array();
+						$data['posts'] = array();
+					}
+					else{
+						$homeworks = $this->Homework_model->getHomeworks($this->session->userdata['admin']['current_course_id']);
+						$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+					}
+
+					
 
 					$data['homeworks'] = $homeworks;
 					$data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
 					$data['subview'] = "homework_list_student";
 					$data['type'] = 'student';
-					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+					
 					$data['added_id'] = $this->session->userdata['admin']['admin_id'];
 					
 					$this->load->view('layouts/standart',$data);

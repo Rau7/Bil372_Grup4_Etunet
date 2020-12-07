@@ -13,10 +13,6 @@
         <label for="exampleInputPassword1">Post Long Description</label>
         <textarea name="post_long_desc" placeholder="Post Long Description"><?php echo $post['post_long_desc']; ?></textarea>
       </div>
-      <div class="form-group">
-        <label for="date_x">Post Date</label>
-        <input type="date" id="date_x" name="post_date" value="<?php echo $post['post_date']; ?>">
-      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     </div>

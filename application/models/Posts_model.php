@@ -17,19 +17,19 @@
 
         function addPostTeacher($data,$course_id,$added_id){
 
-            $this->db->query("INSERT INTO posts SET post_short_desc=".$this->db->escape($data['post_short_desc'])." , post_long_desc=".$this->db->escape($data['post_long_desc']).", post_title=".$this->db->escape($data['post_title']).", post_date=".$this->db->escape($data['post_date']).", post_course_id='".$course_id."', post_teacher_id='".$added_id."' ");
+            $this->db->query("INSERT INTO posts SET post_short_desc=".$this->db->escape($data['post_short_desc'])." , post_long_desc=".$this->db->escape($data['post_long_desc']).", post_title=".$this->db->escape($data['post_title']).", post_date= CURRENT_TIMESTAMP() , post_course_id='".$course_id."', post_teacher_id='".$added_id."' ");
 
         }
 
         function updatePost($data,$course_id,$post_id){
 
-            $this->db->query("UPDATE posts SET post_short_desc=".$this->db->escape($data['post_short_desc'])." , post_long_desc=".$this->db->escape($data['post_long_desc']).", post_title=".$this->db->escape($data['post_title']).", post_date=".$this->db->escape($data['post_date'])." WHERE post_course_id='".$course_id."' AND post_id='".$post_id."' ");
+            $this->db->query("UPDATE posts SET post_short_desc=".$this->db->escape($data['post_short_desc'])." , post_long_desc=".$this->db->escape($data['post_long_desc']).", post_title=".$this->db->escape($data['post_title']).", post_date= CURRENT_TIMESTAMP() WHERE post_course_id='".$course_id."' AND post_id='".$post_id."' ");
 
         }
 
         function addPostStudent($data,$course_id,$added_id){
 
-            $this->db->query("INSERT INTO posts SET post_short_desc=".$this->db->escape($data['post_short_desc'])." , post_long_desc=".$this->db->escape($data['post_long_desc']).", post_title=".$this->db->escape($data['post_title']).", post_date=".$this->db->escape($data['post_date']).", post_course_id='".$course_id."', post_student_id='".$added_id."' ");
+            $this->db->query("INSERT INTO posts SET post_short_desc=".$this->db->escape($data['post_short_desc'])." , post_long_desc=".$this->db->escape($data['post_long_desc']).", post_title=".$this->db->escape($data['post_title']).", post_date= CURRENT_TIMESTAMP(), post_course_id='".$course_id."', post_student_id='".$added_id."' ");
 
         }
 
@@ -40,7 +40,7 @@
         }
 
         function getCommentsWithPostId($post_id){
-            return $this->db->query("SELECT * FROM comments WHERE comment_post_id = ".$post_id." ")->result_array();
+            return $this->db->query("SELECT * FROM comments WHERE comment_post_id = ".$post_id." ORDER BY comment_date ASC")->result_array();
         }
         function getAddedNameWithStudentId($post_id){
             return $this->db->query("SELECT student_name FROM students,comments,posts WHERE comment_post_id = ".$post_id." and comment_added_id = student_id ")->result_array();
