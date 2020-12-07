@@ -71,7 +71,7 @@ class Teacher_resource extends CI_Controller {
 
 			$course_id = $this->session->userdata['admin']['current_course_id'];
 
-			$this->Resource_model->addResource($resource,$course_id);
+			$this->Resource_model->addResource($resource,$course_id,$this->session->userdata['admin']['admin_id']);
 
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Teacher_resource','refresh');
 

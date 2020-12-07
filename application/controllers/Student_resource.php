@@ -68,10 +68,11 @@ public function add_resource(){
 			$this->load->model("Resource_Student_model");
 
 			$resource = $this->input->post();
+			$data = $this->session->userdata['admin']['admin_id'];
 
 			$course_id = $this->session->userdata['admin']['current_course_id'];
 
-			$this->Resource_Student_model->addResource($resource,$course_id);
+			$this->Resource_Student_model->addResource($resource,$course_id,$data);
 
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Student_resource','refresh');
 
