@@ -35,7 +35,7 @@
 
         <?php if($comment['comment_added_id'] == $added_id || $type === 'teacher'){ ?>
         <div style="text-align: right;">
-            <a >Edit Comment</a>  
+            <a href="<?php echo MAIN; ?>Posts/update_comment/<?php echo $comment['comment_id']; ?>/<?php echo $comment['comment_post_id']; ?>">Edit Comment</a>  
         </div>
         <?php } ?>
       </div>
