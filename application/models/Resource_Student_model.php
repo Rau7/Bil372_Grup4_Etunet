@@ -11,9 +11,9 @@
             return $this->db->query("SELECT * FROM resources WHERE resource_id = ".$hmw_id." ")->row_array(0,"array");
         }
 
-        function addResource($data,$course_id){
+        function addResource($data,$course_id,$added_id){
 
-            $this->db->query("INSERT INTO resources SET resource_short_desc=".$this->db->escape($data['resource_short_desc'])." , resource_long_desc=".$this->db->escape($data['resource_long_desc']).",  resource_url=".$this->db->escape($data['resource_url']).", resource_course_id='".$course_id."' ");
+            $this->db->query("INSERT INTO resources SET resource_short_desc=".$this->db->escape($data['resource_short_desc'])." , resource_long_desc=".$this->db->escape($data['resource_long_desc']).",  resource_url=".$this->db->escape($data['resource_url']).", resource_course_id='".$course_id."',resource_student_id='".$added_id."' ");
 
         }
 
