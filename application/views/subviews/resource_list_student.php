@@ -19,8 +19,10 @@
                           <tr>
                             <td><?php echo $resource['resource_short_desc']; ?></td> 
                             <td><a href="<?php echo $resource['resource_url']; ?>"><?php echo $resource['resource_url']; ?></a></td>
+                             <?php if($resource['resource_student_id'] == $added_id){ ?>
                             <td><a href="<?php echo MAIN; ?>Student_resource/update_resource/<?php echo $resource['resource_id']; ?>">Update</a></td>
                             <td><a href="<?php echo MAIN; ?>Student_resource/delete_resource/<?php echo $resource['resource_id']; ?>">Delete</a></td>
+                            <?php } ?>
                           </tr>
                           <?php } ?>
                       </tbody>
