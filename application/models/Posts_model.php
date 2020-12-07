@@ -57,6 +57,9 @@
         function deleteComment($comment_id){
             $this->db->query("DELETE FROM comments WHERE comment_id = ".$comment_id." ");
         }
+        function updateComment($data,$comment_id){
+            $this->db->query("UPDATE comments SET comment_desc=".$this->db->escape($data['comment_des'])." WHERE comment_id='".$comment_id."' ");
+        }
         
     }
 ?>
