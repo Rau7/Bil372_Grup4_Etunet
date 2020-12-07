@@ -6,6 +6,16 @@ Melissa Göşmen 161101057 <br />
 Adnan Ekici 171101047 <br />
 
 # Kurulum
+HeidiSQL ve XAMPP Server ı bilgisayarınıza kurunuz. Asagidaki linkleri kullanarak kurabilirsiniz. <br />
+HeidiSQL : https://www.youtube.com/watch?v=qo0XTfq52cU <br />
+XAMPP Server: https://www.youtube.com/watch?v=-f8N4FEQWyY <br />
+
+Daha sonra projeyi localinize cekiniz.
+HeidiSQL de veritabanı oluşturunuz.Sonrasında ```createtable.sql/``` altinda sql scriptleri veritabanınızda çalıştırınız. <br />
+Daha sonra projedeki  ```Bil372_Grup4_Etunet/application/config/database.php``` dizinindeki database.php dosyasında ```username``` ve ```password``` ve ```database``` kısımlarını oluşturduğunuz veritabanına göre güncelleyiniz.
+
+Not: ```application/config/database.php``` dosyasında default olarak username=root,password=852456,database=projectx oldugu varsayılmıştır.
+
 
 
 # Çalıştırma
