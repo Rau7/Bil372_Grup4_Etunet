@@ -19,7 +19,7 @@
     <div class="card" style="width: 250%;">
       <div class="card-body">
         <?php if($comment['comment_added_id'] == $added_id || $type === 'teacher'){ ?>
-            <a href="<?php echo MAIN; ?>Posts/delete_comment/<?php echo $comment['comment_id']; ?>" role="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+            <a href="<?php echo MAIN; ?>Posts/delete_comment/<?php echo $comment['comment_id']; ?>/<?php echo $comment['comment_post_id']; ?>" role="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
             </a>
         <?php } ?>
         <blockquote class="blockquote mb-0">

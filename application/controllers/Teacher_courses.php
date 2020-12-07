@@ -75,6 +75,7 @@ class Teacher_courses extends CI_Controller {
 
     public function add_all_course(){
 
+        $this->load->model("Posts_model");
         $this->load->model("Login_model");
         $data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
         $data['subview'] = "add_all_course";
@@ -88,7 +89,7 @@ class Teacher_courses extends CI_Controller {
             $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
         }
 
-        $this->load->model("Posts_model");
+        
         
         $this->load->view('layouts/standart',$data);
 
