@@ -192,7 +192,7 @@ class Posts extends CI_Controller {
 
 	    $this->Posts_model->deleteComment($comment_id);
 
-	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Student_resource','refresh');
+	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Dashboard','refresh');
 	  }
 	  else{
 	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
