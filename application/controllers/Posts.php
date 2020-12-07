@@ -335,5 +335,12 @@ class Posts extends CI_Controller {
 	}
 }
 
+
+function getCommentWithPostIdAndCommentId($post_id,$comment_id){
+	return $this->db->query("SELECT * FROM comments WHERE comment_post_id = ".$post_id." AND comment_id = ".$comment_id." ORDER BY comment_date ASC")->result_array();
+}
+
+
+
 ?>
 
