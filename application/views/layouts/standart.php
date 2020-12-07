@@ -33,7 +33,7 @@
                           <a class="nav-link" href="<?php echo MAIN; ?>Teacher_resource" style="color: #FFFFFF!important;">Resources</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="<?php echo MAIN; ?>Teacher_courses" style="color: #FFFFFF!important;">My Courses</a>
+                          <a class="nav-link" href="<?php echo MAIN; ?>Teacher_courses" style="color: #FFFFFF!important;">Courses</a>
                       </li>
                   <?php } ?>
 

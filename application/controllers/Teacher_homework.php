@@ -25,6 +25,7 @@ class Teacher_homework extends CI_Controller {
 					$data['subview'] = "homework_list";
 					$data['type'] = 'teacher';
 					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+					$data['added_id'] = $this->session->userdata['admin']['admin_id'];
 					$this->load->view('layouts/standart',$data);
 
 				}
@@ -45,6 +46,7 @@ class Teacher_homework extends CI_Controller {
 	  $data['subview'] = "add_homework";
 	  $data['type'] = 'teacher';
 	  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+	  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
 	  $this->load->view('layouts/standart',$data);
 
 	}
@@ -86,6 +88,7 @@ class Teacher_homework extends CI_Controller {
 	  $data['subview'] = "update_homework";
 	  $data['type'] = 'teacher';
 	  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+	  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
 	  $this->load->view('layouts/standart',$data);
 
 	}
