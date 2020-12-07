@@ -1,7 +1,11 @@
 <p class="card-description" style="font-size:30px"><b> Resources</b> </p>
+                    <?php if(empty($courses)){ ?>
+                      <p class="card-description" style="font-size:20px"><b> YOU DON'T HAVE ANY COURSES PLEASE ENROLL A COURSE </b> </p>
+                    <?php }else{ ?>
                     <div style="margin-bottom: 30px;">
                       <a href="<?php echo MAIN; ?>Student_resource/add_resource" >Add Resource</a>
                     </div>
+                    <?php } ?>
                     
                      <input class="form-control" id="myInput" type="text" placeholder="Search..">
                     <br>

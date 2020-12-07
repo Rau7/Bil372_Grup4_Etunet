@@ -29,7 +29,7 @@ class Courses extends CI_Controller {
 					
 					$data["title"]= "Profil";
 
-					
+
 					$data['added_id'] = $this->session->userdata['admin']['admin_id'];
 				
 					$this->load->view('layouts/standart',$data);
@@ -108,6 +108,12 @@ class Courses extends CI_Controller {
 			$this->load->model("Courses_model");
 
 			$this->Courses_model->dropcourse($course_id,$this->session->userdata['admin']['admin_id']);
+
+			$courses = $this->Courses_model->getCoursesOfStudentWithId($this->session->userdata['admin']['admin_id']);
+
+			if(empty($courses)){
+				unset($this->session->userdata['admin']['current_course_id']);
+			}
 
 			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Courses','refresh');
 		}
