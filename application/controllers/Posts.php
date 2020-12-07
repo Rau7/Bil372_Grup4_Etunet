@@ -48,9 +48,6 @@ class Posts extends CI_Controller {
 
 		  }
 
-
-
-		  $data['comment_added_name'] = $this->Posts_model->getAddedNameWithTeacherId($post_id);
 		  $this->load->view('layouts/standart',$data);
 	   }
 	   else if($this->session->userdata['admin']['type'] === 'student'){
@@ -67,7 +64,26 @@ class Posts extends CI_Controller {
 		  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 		  $data['comments'] = $this->Posts_model->getCommentsWithPostId($post_id);
 
-		  $data['comment_added_name'] = $this->Posts_model->getAddedNameWithStudentId($post_id);
+		  $data['real_comments'] = array();
+		  $counter = 0;
+		  foreach ($data['comments'] as $comment) {
+		  	
+		  	if($comment['comment_added_type'] === 'teacher'){
+
+		  		$data['real_comments'][$counter] = $comment;
+		  		$data['real_comments'][$counter]['teacher'] = $this->Login_model->getTeacherWithId($comment['comment_added_id']); 
+
+		  		
+		  	}
+		  	else{
+		  		$data['real_comments'][$counter] = $comment;
+		  		$data['real_comments'][$counter]['student'] = $this->Login_model->getStudentWithId($comment['comment_added_id']); 
+		  	}
+
+		  	$counter++;
+
+		  }
+
 		  $this->load->view('layouts/standart',$data);
 	   }
 	}
