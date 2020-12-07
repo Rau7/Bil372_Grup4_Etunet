@@ -314,7 +314,25 @@ class Posts extends CI_Controller {
 		  $this->load->view('layouts/standart',$data);
 	   }
 	}	
+	
+	public function handle_comment_update($comment_id,$post_id){
+		if(isset($this->session->userdata['admin']['admin_id'])){
 
+			$this->load->model("Login_model");
+		    $this->load->model("Posts_model");
+
+			$post = $this->input->post();
+
+			$this->Posts_model->updateComment($post,$comment_id);
+
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Posts/show_post/'.$post_id.'','refresh');
+
+			
+		}
+		else{
+			redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
+		}
+	}
 }
 
 ?>
