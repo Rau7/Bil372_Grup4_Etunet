@@ -2,8 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Posts extends CI_Controller {
 
-	
-
 	public function index()
 	{	
 
@@ -244,6 +242,78 @@ class Posts extends CI_Controller {
 	    redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Enterence','refresh');
 	  }
 	}
+
+	public function update_comment($comment_id,$post_id){
+
+		if($this->session->userdata['admin']['type'] === 'teacher'){
+
+		  $this->load->model("Login_model");
+		  $this->load->model("Posts_model");
+
+		  $data['post'] = $this->Posts_model->getPostWithId($post_id)[0];
+		  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
+		  $data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
+		  $data['subview'] = "update_comment";
+		  $data['type'] = 'teacher';
+		  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+		  $data['comments'] = $this->Posts_model->getCommentsWithPostId($post_id);
+
+
+		  $data['real_comments'] = array();
+		  $counter = 0;
+		  foreach ($data['comments'] as $comment) {
+		  	
+		  	if($comment['comment_added_type'] === 'teacher'){
+
+		  		$data['real_comments'][$counter] = $comment;
+		  		$data['real_comments'][$counter]['teacher'] = $this->Login_model->getTeacherWithId($comment['comment_added_id']); 
+
+		  	}
+		  	else{
+		  		$data['real_comments'][$counter] = $comment;
+		  		$data['real_comments'][$counter]['student'] = $this->Login_model->getStudentWithId($comment['comment_added_id']); 
+		  	}
+
+		  	$counter++;
+
+		  }
+		  $data['comment'] = $this->Posts_model->getCommentsWithPostId($post_id)[0];
+		  $this->load->view('layouts/standart',$data);
+	   }
+	   else if($this->session->userdata['admin']['type'] === 'student'){
+
+		  $this->load->model("Login_model");
+		  $this->load->model("Posts_model");
+
+		  $data['post'] = $this->Posts_model->getPostWithId($post_id)[0];
+		  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
+		  $data['courses'] = $this->Login_model->getCoursesOfStudent($this->session->userdata['admin']['student_id']);
+		  $data['subview'] = "update_comment";
+		  $data['type'] = 'student';
+		  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+		  $data['comments'] = $this->Posts_model->getCommentsWithPostId($post_id);
+
+		  $data['real_comments'] = array();
+		  $counter = 0;
+		  foreach ($data['comments'] as $comment) {
+		  	
+		  	if($comment['comment_added_type'] === 'teacher'){
+
+		  		$data['real_comments'][$counter] = $comment;
+		  		$data['real_comments'][$counter]['teacher'] = $this->Login_model->getTeacherWithId($comment['comment_added_id']); 
+		  	}
+		  	else{
+		  		$data['real_comments'][$counter] = $comment;
+		  		$data['real_comments'][$counter]['student'] = $this->Login_model->getStudentWithId($comment['comment_added_id']); 
+		  	}
+
+		  	$counter++;
+
+		  }
+		  $data['comment'] = $this->Posts_model->getCommentsWithPostId($post_id)[0];
+		  $this->load->view('layouts/standart',$data);
+	   }
+	}	
 
 }
 
