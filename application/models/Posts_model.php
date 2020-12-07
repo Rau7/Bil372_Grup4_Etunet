@@ -60,11 +60,12 @@
         function updateComment($data,$comment_id){
             $this->db->query("UPDATE comments SET comment_desc=".$this->db->escape($data['comment_des'])." WHERE comment_id='".$comment_id."' ");
         }
-        
+
+        function getCommentWithPostIdAndCommentId($post_id,$comment_id){
+            return $this->db->query("SELECT * FROM comments WHERE comment_post_id = ".$post_id." AND comment_id = ".$comment_id." ORDER BY comment_date ASC")->result_array();
+        }
+
     }
 
-function getCommentWithPostIdAndCommentId($post_id,$comment_id){
-    return $this->db->query("SELECT * FROM comments WHERE comment_post_id = ".$post_id." AND comment_id = ".$comment_id." ORDER BY comment_date ASC")->result_array();
-}
 
 ?>
