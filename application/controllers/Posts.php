@@ -277,7 +277,7 @@ class Posts extends CI_Controller {
 		  	$counter++;
 
 		  }
-		  $data['comment'] = $this->Posts_model->getCommentsWithPostId($post_id)[0];
+		  $data['comment'] = $this->Posts_model->getCommentWithPostIdAndCommentId($post_id,$comment_id)[0];//$data['comment'] = $this->Posts_model->getCommentsWithPostId($post_id)[0];
 		  $this->load->view('layouts/standart',$data);
 	   }
 	   else if($this->session->userdata['admin']['type'] === 'student'){
