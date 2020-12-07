@@ -5,6 +5,8 @@ Rabia Yunusoğlu 161101031 <br />
 Melissa Göşmen 161101057 <br />
 Adnan Ekici 171101047 <br />
 
+İstatistikler projectstats klasörü içerisindedir.
+
 # Kurulum
 HeidiSQL ve XAMPP Server ı bilgisayarınıza kurunuz. Asagidaki linkleri kullanarak kurabilirsiniz. <br />
 HeidiSQL : https://www.youtube.com/watch?v=qo0XTfq52cU <br />
