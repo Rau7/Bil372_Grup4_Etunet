@@ -32,6 +32,9 @@
                       <li class="nav-item">
                           <a class="nav-link" href="<?php echo MAIN; ?>Teacher_resource" style="color: #FFFFFF!important;">Resources</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="<?php echo MAIN; ?>Teacher_courses" style="color: #FFFFFF!important;">My Courses</a>
+                      </li>
                   <?php } ?>
 
                   <?php if($type === 'student'){ ?>
@@ -80,7 +83,7 @@
                             <h5 class="card-title"><?php echo $post['post_title']; ?></h5>
                             <p class="card-text"><?php echo $post['post_short_desc']; ?></p>
                             <a href="<?php echo MAIN; ?>Posts/show_post/<?php echo $post['post_id']; ?>" class="card-link">See Post</a>
-                            <?php if($type === 'teacher'){ ?>
+                            <?php if( $post['post_student_id'] == $added_id || $type === 'teacher'){ ?>
                                 <a href="<?php echo MAIN; ?>Posts/delete_post/<?php echo $post['post_id']; ?>" class="card-link">Delete Post</a>
                             <?php } ?>
                           </div>

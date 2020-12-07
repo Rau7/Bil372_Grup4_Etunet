@@ -25,6 +25,7 @@ class Student_resource extends CI_Controller {
 					$data['subview'] = "resource_list_student";
 					$data['type'] = 'student';
 					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+					$data['added_id'] = $this->session->userdata['admin']['admin_id'];
 					$this->load->view('layouts/standart',$data);
 
 				}
@@ -46,6 +47,7 @@ public function add_resource(){
 	  $data['subview'] = "add_resource_student";
 	  $data['type'] = 'student';
 	  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+	  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
 
 	  $this->load->view('layouts/standart',$data);
 
@@ -88,6 +90,7 @@ public function add_resource(){
 	  $data['subview'] = "update_resource_student";
 	  $data['type'] = 'student';
 	  $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+	  $data['added_id'] = $this->session->userdata['admin']['admin_id'];
 
 	  $this->load->view('layouts/standart',$data);
 
