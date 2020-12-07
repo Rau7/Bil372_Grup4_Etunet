@@ -45,9 +45,17 @@ class Courses extends CI_Controller {
 
 					$data['all_courses'] = $all_courses;
 					$data['subview'] = "courses_list";
-					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+
+
+					if(!isset($this->session->userdata['admin']['current_course_id'])){
+						$data['posts'] = array();
+					}
+					else{
+						$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+					}
+
+
 					$data['added_id'] = $this->session->userdata['admin']['admin_id'];
-					
 					$this->load->view('layouts/standart',$data);
 
 				}

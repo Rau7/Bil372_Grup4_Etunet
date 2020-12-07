@@ -39,6 +39,24 @@
             
         }
 
-
+        function getCommentsWithPostId($post_id){
+            return $this->db->query("SELECT * FROM comments WHERE comment_post_id = ".$post_id." ")->result_array();
+        }
+        function getAddedNameWithStudentId($post_id){
+            return $this->db->query("SELECT student_name FROM students,comments,posts WHERE comment_post_id = ".$post_id." and comment_added_id = student_id ")->result_array();
+        }
+        function getAddedNameWithTeacherId($post_id){
+            return $this->db->query("SELECT teacher_name FROM teachers,comments,posts WHERE comment_post_id = ".$post_id." and comment_added_id = teacher_id ")->result_array();
+        }
+        function addCommentTeacher($data,$post_id,$added_id,$added_type){
+            $this->db->query("INSERT INTO comments SET comment_added_id='".$added_id."', comment_post_id='".$post_id."', comment_date=CURRENT_TIMESTAMP() , comment_desc=".$this->db->escape($data['comment_desc']).",comment_added_type='".$added_type."' ");
+        }
+        function addCommentStudent($data,$post_id,$added_id,$added_type){
+            $this->db->query("INSERT INTO comments SET comment_added_id='".$added_id."', comment_post_id='".$post_id."', comment_date=CURRENT_TIMESTAMP() , comment_desc=".$this->db->escape($data['comment_desc']).",comment_added_type='".$added_type."'");
+        }
+        function deleteComment($comment_id){
+            $this->db->query("DELETE FROM comments WHERE comment_id = ".$comment_id." ");
+        }
+        
     }
 ?>
