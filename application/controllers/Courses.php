@@ -28,6 +28,8 @@ class Courses extends CI_Controller {
 
 					
 					$data["title"]= "Profil";
+
+					
 					$data['added_id'] = $this->session->userdata['admin']['admin_id'];
 				
 					$this->load->view('layouts/standart',$data);

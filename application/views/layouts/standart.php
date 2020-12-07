@@ -71,7 +71,10 @@
             <div id="navigation">
                 <div id="interactors" style="margin-top: 16px;">
                     <!-- buttons and search -->
-                    <a href="<?php echo MAIN; ?>Posts/add_post" class="btn">New Post</a>
+                     <?php if(!empty($courses)){ ?>
+                      <a href="<?php echo MAIN; ?>Posts/add_post" class="btn">New Post</a>
+                    <?php }?>
+                    
                     <h1 style="padding-top: 13px; font-size: 2.00rem; text-align: center;">Posts</h1>
                 </div>
 

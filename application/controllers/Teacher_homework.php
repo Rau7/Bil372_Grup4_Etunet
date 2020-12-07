@@ -18,13 +18,22 @@ class Teacher_homework extends CI_Controller {
 
 	    		if($this->session->userdata['admin']['type'] === 'teacher'){
 	    			
-					$homeworks = $this->Homework_model->getHomeworks($this->session->userdata['admin']['current_course_id']);
+	    			if(!isset($this->session->userdata['admin']['current_course_id'])){
+                        $data['posts'] = array();
 
-					$data['homeworks'] = $homeworks;
+                        $data['homeworks'] = array();
+	                }
+	                else{
+	                        $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+	                        $homeworks = $this->Homework_model->getHomeworks($this->session->userdata['admin']['current_course_id']);
+
+							$data['homeworks'] = $homeworks;
+	                }
+
+					
 					$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
 					$data['subview'] = "homework_list";
 					$data['type'] = 'teacher';
-					$data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
 					$data['added_id'] = $this->session->userdata['admin']['admin_id'];
 					$this->load->view('layouts/standart',$data);
 

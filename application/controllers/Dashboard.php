@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller {
 
 					$data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
 					if(empty($data['courses'])){
-						redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Courses','refresh');
+						redirect('http://localhost/Bil372_Grup4_Etunet/index.php/Teacher_courses','refresh');
 					}
 					else{
 						if(isset($this->session->userdata['admin']['current_course_id'])){

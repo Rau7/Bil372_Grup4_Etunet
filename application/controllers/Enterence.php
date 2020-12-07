@@ -37,6 +37,7 @@ class Enterence extends CI_Controller {
             $admin['courses'] = $this->Login_model->getCoursesOfStudent($admin['student_id']);
           }
           else{
+            
             $admin = $this->Login_model->getTeacher($this->input->post());
             $admin['admin_id'] = $admin['teacher_id'];
             $admin['type'] = "teacher";

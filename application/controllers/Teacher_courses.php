@@ -16,13 +16,23 @@ class Teacher_courses extends CI_Controller {
 
             if($this->session->userdata['admin']['type'] === 'teacher'){
 
-                $cources = $this->Teacher_all_courses_model->getCourses($this->session->userdata['admin']['current_course_id']);
+                if(!isset($this->session->userdata['admin']['current_course_id'])){
+                        $data['posts'] = array();
 
-                $data['course'] = $cources;
+                        $data['course'] = array();
+                }
+                else{
+                        $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+                        $cources = $this->Teacher_all_courses_model->getCourses($this->session->userdata['admin']['current_course_id']);
+
+                        $data['course'] = $cources;
+                }
+
+                
                 $data['courses'] = $this->Login_model->getCoursesOfTeacher($this->session->userdata['admin']['teacher_id']);
                 $data['subview'] = "teacher_all_courses_list";
                 $data['type'] = 'teacher';
-                $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+                
                 $data['added_id'] = $this->session->userdata['admin']['admin_id'];
                 $this->load->view('layouts/standart',$data);
 
@@ -71,8 +81,15 @@ class Teacher_courses extends CI_Controller {
         $data['type'] = 'teacher';
         $data['added_id'] = $this->session->userdata['admin']['admin_id'];
 
+        if(!isset($this->session->userdata['admin']['current_course_id'])){
+            $data['posts'] = array();
+        }
+        else{
+            $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+        }
+
         $this->load->model("Posts_model");
-        $data['posts'] = $this->Posts_model->getPostsOfCourse($this->session->userdata['admin']['current_course_id']);
+        
         $this->load->view('layouts/standart',$data);
 
     }
